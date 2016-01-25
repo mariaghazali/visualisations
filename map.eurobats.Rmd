@@ -1,4 +1,4 @@
-* First I set names for future regional maps in RPubs.
+* First I set link names for future regional maps in RPubs.
 * Write html links in this markdown document. And created several markdowns documents which were published to RPubs
 * Regions were specified in gvisGeoChart options: region = "world", or "150" (Europe), or "002" (Africa), or "142" (Asia) 
 
