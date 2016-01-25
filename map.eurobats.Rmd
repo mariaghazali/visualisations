@@ -1,3 +1,9 @@
+* First I set names for future regional maps in RPubs.
+* Write html links in this markdown document. And created several markdowns documents which were published to RPubs
+* Regions were specified in gvisGeoChart options: region = "world", or "150" (Europe), or "002" (Africa), or "142" (Asia) 
+
+## Below is the draft for such a regional map:
+
 ### EUROBATS Key Underground Sites map
 Hover over the plot with your mouse to see number of key sites in each country. All countries with the number of reported keysites are presented in the table, left to the plot. You can sort table by clicking on column names.
 
@@ -20,7 +26,7 @@ gchart.europe <- gvisGeoChart(data = EUROBATS,
                         locationvar = "country",
                         colorvar = 'KeysitesAC19',
                         options = list(displayMode = "regions", resolution = "countries",
-                        region = "world", backgroundColor = "lightblue",
+                        region = "150", backgroundColor = "lightblue",
                         colorAxis = "{minValue: 0, colors: ['#FFF7BC', '#FEE391', '#FEC44F','#FE9929','#EC7014','#CC4C02','#993404','#662506']}",
                         colorAxis.minValue = 0))
 
