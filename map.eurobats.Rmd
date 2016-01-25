@@ -1,0 +1,39 @@
+### EUROBATS Key Underground Sites map
+Hover over the plot with your mouse to see number of key sites in each country. All countries with the number of reported keysites are presented in the table, left to the plot. You can sort table by clicking on column names.
+
+<body> Look closer:  <a href="http://rpubs.com/mariaghazali/key-sites-world" target="_parent"><b>World</b></a>, 
+<a href="http://rpubs.com/mariaghazali/key-sites-europe" target="_parent">Europe</a>, 
+<a href="http://rpubs.com/mariaghazali/key-sites-africa" target="_parent">Africa</a>, 
+<a href="http://rpubs.com/mariaghazali/key-sites-asia" target="_parent">Asia</a>
+<body/>
+
+```{r setOptions, message=FALSE, echo=FALSE}
+library(googleVis)
+op <- options(gvis.plot.tag='chart')
+```
+
+```{r, results='asis', echo=FALSE}
+data<-read.csv("keysites2.csv",sep=",")
+EUROBATS<-na.omit(data[,c("country","KeysitesAC19")])
+
+gchart.europe <- gvisGeoChart(data = EUROBATS,
+                        locationvar = "country",
+                        colorvar = 'KeysitesAC19',
+                        options = list(displayMode = "regions", resolution = "countries",
+                        region = "world", backgroundColor = "lightblue",
+                        colorAxis = "{minValue: 0, colors: ['#FFF7BC', '#FEE391', '#FEC44F','#FE9929','#EC7014','#CC4C02','#993404','#662506']}",
+                        colorAxis.minValue = 0))
+
+gtable.all <- gvisTable(EUROBATS, 
+                        options = list(page = 'enable',pageSize = 12))
+
+g.ch.t <- gvisMerge(gchart.europe, gtable.all, horizontal=TRUE)
+
+plot(g.ch.t)
+```
+
+```{r resetOptions, echo=FALSE}
+## Set options back to original options
+options(op)
+```
+Keysites data was taken from [Report of the Intersessional Working Group on Key Underground Sites](http://www.eurobats.org/sites/default/files/documents/pdf/Advisory_Committee/Doc_StC9_AC19_33_Report%20IWGUndergroundSites.pdf) presented at [19th Advisory Committee Meeting, Greece, 2014](http://www.eurobats.org/official_documents/advisory_committee/19th_meeting_advisory_committee).
